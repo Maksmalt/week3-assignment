@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>JavaScript</title>
+</head>
+
+<body>
+    <h1>JavaScript</h1>
+    <script type="text/JavaScript">
+
+var house = {
+areas: [{
+livingRoom: {items: ['tv','sofa']},
+bedroomOne: {items: ['bed','washing machine'], windows: 3},
+bedroomTwo: {items: ['bed','bed','desk'], windows: 4},
+kitchen: {items: ['fridge','broken chair']}
+}],
+garden: 
+[true, 'Red Rose'],
+garage: 
+{ car: { color: 'red', wheels: 4, honk: ()=>{alert("Beep")}}}
+}
+
+// function to display what is currently inside of the house
+function stateOfHouse () {
+    console.log("Current state of the 'House array' array", house);
+}
+
+// Find total number of areas in the house
+let bla = Object.keys(house.areas[0]).length;
+console.log("Total number of areas in the house is", bla);
+
+// Add a dining table to the living room
+house.areas[0].livingRoom.items.push("dining table");
+
+// Add a stove to the kitchen
+house.areas[0].kitchen.items.push("stove");
+
+// Remove the washing machine from bedroomOne
+house.areas[0].bedroomOne.items.pop();
+
+// Find the total number of beds in all rooms
+//let beds=0;
+  //  Object.keys(house.areas[0]).forEach(element => {
+    // let itemsList=house.areas[0][element].items;
+    // itemsList.forEach(item => {  
+      //  if(item==="bed")
+        //{
+         //beds++;
+        //}
+     //});
+// });
+ //console.log("total number of beds in the house is", beds);
+ let bedCounter = 0;  
+ let allTheBedsInArea = 0;         
+ const allTheAreaNames = Object.values(house.areas[0]);
+            allTheAreaNames.forEach ( (area) => {
+                    allTheBedsInArea = area.items.filter (item => item === "bed").length;
+                    bedCounter += allTheBedsInArea;
+            })
+console.log("Total numbet of beds in the house is", bedCounter);
+
+
+// Change the color of the car to blue
+house.garage.car.color = "blue";
+
+// Add a another car to the garage with a honk function
+let newCar = { car: { color: 'red', wheels: 4, honk: () => {alert("Beepiidyyy")}}}
+house.garage.newCar = newCar;
+
+// Make the new car honk
+house.garage.newCar.car.honk();
+
+// Change the 'broken chair' in the kitchen to 'new chair'
+house.areas[0].kitchen.items[1] = "new chair";
+
+// If the house has a garden, console.log the name of the flower
+if (house.garden) {
+    console.log(house.garden[1]);
+}
+stateOfHouse();
+            
+        </script>
+</body>
+
+</html>
